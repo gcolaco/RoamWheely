@@ -19,6 +19,7 @@
 		72D016C326A1BA9D00710743 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016C226A1BA9D00710743 /* Constants.swift */; };
 		72D016C526A1BCBC00710743 /* OptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016C426A1BCBC00710743 /* OptionsCell.swift */; };
 		72D016C726A1CF4B00710743 /* RoamWheelyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016C626A1CF4B00710743 /* RoamWheelyButton.swift */; };
+		72D016C926A2084B00710743 /* RoamWheelyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016C826A2084B00710743 /* RoamWheelyTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		72D016C226A1BA9D00710743 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		72D016C426A1BCBC00710743 /* OptionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsCell.swift; sourceTree = "<group>"; };
 		72D016C626A1CF4B00710743 /* RoamWheelyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoamWheelyButton.swift; sourceTree = "<group>"; };
+		72D016C826A2084B00710743 /* RoamWheelyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoamWheelyTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				72D016C226A1BA9D00710743 /* Constants.swift */,
 				72D016C426A1BCBC00710743 /* OptionsCell.swift */,
 				72D016C626A1CF4B00710743 /* RoamWheelyButton.swift */,
+				72D016C826A2084B00710743 /* RoamWheelyTextField.swift */,
 			);
 			path = RoamWheely;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				72D016A726A1B6AB00710743 /* AppDelegate.swift in Sources */,
 				72D016A926A1B6AB00710743 /* SceneDelegate.swift in Sources */,
 				72D016C326A1BA9D00710743 /* Constants.swift in Sources */,
+				72D016C926A2084B00710743 /* RoamWheelyTextField.swift in Sources */,
 				72D016C526A1BCBC00710743 /* OptionsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

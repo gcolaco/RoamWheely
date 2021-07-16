@@ -20,6 +20,10 @@
 		72D016C526A1BCBC00710743 /* OptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016C426A1BCBC00710743 /* OptionsCell.swift */; };
 		72D016C726A1CF4B00710743 /* RoamWheelyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016C626A1CF4B00710743 /* RoamWheelyButton.swift */; };
 		72D016C926A2084B00710743 /* RoamWheelyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016C826A2084B00710743 /* RoamWheelyTextField.swift */; };
+		72D016CB26A20B6F00710743 /* RoamWheelyContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016CA26A20B6F00710743 /* RoamWheelyContainerView.swift */; };
+		72D016CD26A20BA500710743 /* RoamWheelyBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016CC26A20BA500710743 /* RoamWheelyBodyLabel.swift */; };
+		72D016CF26A20BE100710743 /* AddOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016CE26A20BE100710743 /* AddOptionsVC.swift */; };
+		72D016D126A20C5500710743 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016D026A20C5500710743 /* UIView+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		72D016C426A1BCBC00710743 /* OptionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsCell.swift; sourceTree = "<group>"; };
 		72D016C626A1CF4B00710743 /* RoamWheelyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoamWheelyButton.swift; sourceTree = "<group>"; };
 		72D016C826A2084B00710743 /* RoamWheelyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoamWheelyTextField.swift; sourceTree = "<group>"; };
+		72D016CA26A20B6F00710743 /* RoamWheelyContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoamWheelyContainerView.swift; sourceTree = "<group>"; };
+		72D016CC26A20BA500710743 /* RoamWheelyBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoamWheelyBodyLabel.swift; sourceTree = "<group>"; };
+		72D016CE26A20BE100710743 /* AddOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOptionsVC.swift; sourceTree = "<group>"; };
+		72D016D026A20C5500710743 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,10 +88,14 @@
 				72D016BC26A1B95800710743 /* UIViewController+Ext.swift */,
 				72D016BE26A1B9C500710743 /* UITableView+Ext.swift */,
 				72D016C026A1BA0500710743 /* RoamWheelyTitleLabel.swift */,
+				72D016CC26A20BA500710743 /* RoamWheelyBodyLabel.swift */,
+				72D016CE26A20BE100710743 /* AddOptionsVC.swift */,
+				72D016D026A20C5500710743 /* UIView+Ext.swift */,
 				72D016C226A1BA9D00710743 /* Constants.swift */,
 				72D016C426A1BCBC00710743 /* OptionsCell.swift */,
 				72D016C626A1CF4B00710743 /* RoamWheelyButton.swift */,
 				72D016C826A2084B00710743 /* RoamWheelyTextField.swift */,
+				72D016CA26A20B6F00710743 /* RoamWheelyContainerView.swift */,
 			);
 			path = RoamWheely;
 			sourceTree = "<group>";
@@ -159,6 +171,8 @@
 			files = (
 				72D016C126A1BA0500710743 /* RoamWheelyTitleLabel.swift in Sources */,
 				72D016AB26A1B6AB00710743 /* OptionsVC.swift in Sources */,
+				72D016D126A20C5500710743 /* UIView+Ext.swift in Sources */,
+				72D016CD26A20BA500710743 /* RoamWheelyBodyLabel.swift in Sources */,
 				72D016BB26A1B8FC00710743 /* RoamWheelyEmptyStateView.swift in Sources */,
 				72D016BD26A1B95800710743 /* UIViewController+Ext.swift in Sources */,
 				72D016C726A1CF4B00710743 /* RoamWheelyButton.swift in Sources */,
@@ -168,6 +182,8 @@
 				72D016C326A1BA9D00710743 /* Constants.swift in Sources */,
 				72D016C926A2084B00710743 /* RoamWheelyTextField.swift in Sources */,
 				72D016C526A1BCBC00710743 /* OptionsCell.swift in Sources */,
+				72D016CB26A20B6F00710743 /* RoamWheelyContainerView.swift in Sources */,
+				72D016CF26A20BE100710743 /* AddOptionsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

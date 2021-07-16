@@ -37,7 +37,7 @@ class RoamWheelyTextField: UITextField {
         
         backgroundColor             = .tertiarySystemBackground
         autocorrectionType          = .no
-        returnKeyType               = .go
+        returnKeyType               = .done
         
         placeholder                 = "Enter an option"
         

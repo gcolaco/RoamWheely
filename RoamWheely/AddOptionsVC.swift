@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AddOptionDelegate {
+    func add(option: String)
+}
+
 class AddOptionsVC: UIViewController {
     
     
@@ -19,6 +23,12 @@ class AddOptionsVC: UIViewController {
     
     var alertTitle: String?
     var message: String?
+    
+    var delegate: AddOptionDelegate?
+    
+    var isOptionEntered: Bool {
+        return !optionTxtField.text!.isEmpty
+    }
 
     
     private let padding: CGFloat = 20
@@ -39,12 +49,24 @@ class AddOptionsVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         view.addSubviews(containerView, titleLabel, cancelButton, actionButton, optionTxtField, messageLabel)
+        createDismissKeyboardTapGesture()
         configureContainerView()
         configuretitleLabel()
         configureCancelButton()
         configureActionButton()
         configureTextField()
         configureMessageLabel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        optionTxtField.text = ""
+
+    }
+    
+    private func createDismissKeyboardTapGesture() {
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
     }
     
     private func configureContainerView() {
@@ -71,7 +93,7 @@ class AddOptionsVC: UIViewController {
     
     private func configureActionButton() {
         actionButton.setTitle("Add option", for: .normal)
-        actionButton.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
+        actionButton.addTarget(self, action: #selector(addOptionAction), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             actionButton.bottomAnchor.constraint(equalTo: cancelButton.topAnchor, constant: -padding),
@@ -97,6 +119,9 @@ class AddOptionsVC: UIViewController {
     
     
     private func configureTextField() {
+        optionTxtField.resignFirstResponder()
+        optionTxtField.delegate = self
+        
         NSLayoutConstraint.activate([
             optionTxtField.bottomAnchor.constraint(equalTo: actionButton.topAnchor, constant: -16),
             optionTxtField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: padding),
@@ -121,8 +146,31 @@ class AddOptionsVC: UIViewController {
     }
     
     
+    @objc private func addOptionAction() {
+        guard isOptionEntered else {
+            let alert = UIAlertController(title: "🚨 Ooops", message: "An option can't be empty.", preferredStyle: .alert)
+            let cancelButton    = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(cancelButton)
+            present(alert, animated: true)
+            return
+        }
+        delegate?.add(option: optionTxtField.text!)
+        dismiss(animated: true)
+    }
+    
+    
     @objc private func dismissVC() {
         dismiss(animated: true)
+    }
+    
+}
+
+
+extension AddOptionsVC: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        return true
     }
     
 }

@@ -10,7 +10,8 @@ import UIKit
 class OptionsVC: UIViewController {
     
     private let tableView       = UITableView()
-    var options: [String]   = []
+
+    var options: [String]       = []
 
     
     override func viewDidLoad() {
@@ -22,6 +23,7 @@ class OptionsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.options = UserDefaults.standard.stringArray(forKey: "option") ?? []
         updateUIWith(with: options)
     }
     
@@ -51,10 +53,11 @@ class OptionsVC: UIViewController {
     
     private func configureTableView() {
         view.addSubview(tableView)
-        tableView.frame         = view.bounds
-        tableView.rowHeight     = 80
-        tableView.delegate      = self
-        tableView.dataSource    = self
+        tableView.frame             = view.bounds
+        tableView.rowHeight         = 110
+        tableView.delegate          = self
+        tableView.dataSource        = self
+        tableView.separatorStyle    = .none
         tableView.removeExcessCells()
         
         tableView.register(OptionsCell.self, forCellReuseIdentifier: OptionsCell.reuseID)
@@ -62,7 +65,34 @@ class OptionsVC: UIViewController {
     
     
     @objc private func addFavoriteButtonPressed() {
-        print("Clicked")
+        let alert = UIAlertController(title: "Add option", message: "Add the option for the Roam Wheely.", preferredStyle: .alert)
+        
+        alert.addTextField { field in
+            field.placeholder = "Enter Item"
+        }
+        
+        let cancelButton    = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let doneButton      = UIAlertAction(title: "Add", style: .default) { [weak self] _ in
+            guard let self = self else {return}
+            
+            if let field = alert.textFields?.first {
+                if let text = field.text, !text.isEmpty {
+                    DispatchQueue.main.async {
+                        var currentOptions = UserDefaults.standard.stringArray(forKey: "option") ?? []
+                        currentOptions.append(text)
+                        UserDefaults.standard.setValue(currentOptions, forKey: "option")
+                        self.options.append(text)
+                        self.tableView.reloadData()
+                        self.view.bringSubviewToFront(self.tableView)
+                    }
+                }
+            }
+        }
+        
+        alert.addAction(cancelButton)
+        alert.addAction(doneButton)
+        
+        present(alert, animated: true)
     }
 
 }

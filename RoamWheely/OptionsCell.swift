@@ -11,7 +11,7 @@ class OptionsCell: UITableViewCell {
 
     static let reuseID  = "OptionsCell"
     
-    let usernameLabel   = RoamWheelyTitleLabel(textAlignment: .left, fontSize: 26)
+    let optionLabel   = RoamWheelyTitleLabel(textAlignment: .left, fontSize: 26)
     let bgView          = UIView()
     
     
@@ -27,8 +27,8 @@ class OptionsCell: UITableViewCell {
     }
     
     
-    func set(option: String) {
-        usernameLabel.text = option
+    func set(option: Option) {
+        optionLabel.text = option.optionName
     }
     
     
@@ -46,7 +46,7 @@ class OptionsCell: UITableViewCell {
             bgView.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
             bgView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
             bgView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
-            bgView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding)
+            bgView.heightAnchor.constraint(equalToConstant: 100)
         
         ])
         
@@ -54,17 +54,17 @@ class OptionsCell: UITableViewCell {
     
     
     private func configureUserNameLabel() {
-        addSubview(usernameLabel)
+        addSubview(optionLabel)
         
-        let padding: CGFloat    = 8
+        let padding: CGFloat    = 12
         
         NSLayoutConstraint.activate([
 
             
-            usernameLabel.centerYAnchor.constraint(equalTo: bgView.centerYAnchor),
-            usernameLabel.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: padding),
-            usernameLabel.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: -padding),
-            usernameLabel.heightAnchor.constraint(equalToConstant: 40)
+            optionLabel.centerYAnchor.constraint(equalTo: bgView.centerYAnchor),
+            optionLabel.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: padding),
+            optionLabel.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: -padding),
+            optionLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
         
     }

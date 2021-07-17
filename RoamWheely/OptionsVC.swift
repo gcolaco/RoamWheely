@@ -11,7 +11,8 @@ class OptionsVC: UIViewController {
     
     private let tableView       = UITableView()
 
-    var options: [String]       = []
+    
+    var options: [Option] = []
 
     
     override func viewDidLoad() {
@@ -23,8 +24,7 @@ class OptionsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.options = UserDefaults.standard.stringArray(forKey: "option") ?? []
-        updateUIWith(with: options)
+        getOptions()
     }
     
      
@@ -38,7 +38,7 @@ class OptionsVC: UIViewController {
     }
     
     
-    private func updateUIWith(with options: [String]) {
+    private func updateUIWith(with options: [Option]) {
         if options.isEmpty {
             self.showEmptyStateView(with: "You don't have any options. Add one by tapping the \"+\" sign!", in: self.view)
         } else {
@@ -46,6 +46,20 @@ class OptionsVC: UIViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.view.bringSubviewToFront(self.tableView)
+            }
+        }
+    }
+    
+    
+    private func getOptions() {
+        PersistenceManager.retrieveOptions { [weak self] result in
+            guard let self = self else {return}
+            
+            switch result {
+            case .success(let options):
+                self.updateUIWith(with: options)
+            case .failure(let error):
+                self.presentRoamWheelyALertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }
         }
     }
@@ -65,32 +79,14 @@ class OptionsVC: UIViewController {
     
     
     @objc private func addFavoriteButtonPressed() {
-        DispatchQueue.main.async {
-            let addOptionVC = AddOptionsVC(title: "Add option", message: "Add the option for the Roam Wheely.")
-            addOptionVC.delegate = self
-            addOptionVC.modalPresentationStyle  = .overFullScreen
-            addOptionVC.modalTransitionStyle    = .crossDissolve
-            self.present(addOptionVC, animated: true)
-        }
-
+        let addOptionVC = AddOptionsVC()
+        addOptionVC.modalPresentationStyle  = .overFullScreen
+        addOptionVC.modalTransitionStyle    = .crossDissolve
+        navigationController?.pushViewController(addOptionVC, animated: true)
     }
 
 }
 
-extension OptionsVC: AddOptionDelegate {
-    func add(option: String) {
-        DispatchQueue.main.async {
-            var currentOptions = UserDefaults.standard.stringArray(forKey: "option") ?? []
-            currentOptions.append(option)
-            UserDefaults.standard.setValue(currentOptions, forKey: "option")
-            self.options.append(option)
-            self.tableView.reloadData()
-            self.view.bringSubviewToFront(self.tableView)
-        }
-    }
-    
-    
-}
 
 
 extension OptionsVC: UITableViewDelegate, UITableViewDataSource {
@@ -106,6 +102,33 @@ extension OptionsVC: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else {return}
+        
+        let option  = options[indexPath.row]
+        PersistenceManager.updateWith(option: option, actionType: .remove) { [weak self] error in
+            guard let self = self else {return}
+            
+            guard let error = error else {
+                self.options.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .left)
+                return
+            }
+            
+            self.presentRoamWheelyALertOnMainThread(title: "Unable to remove", message: error.rawValue, buttonTitle: "Ok")
+            
+        }
+        
+        
+        if options.isEmpty {
+            showEmptyStateView(with: "You don't have any options. Add one by tapping the \"+\" sign!", in: self.view)
+        }
+        
+        
+    }
+    
+    
 }
 
 

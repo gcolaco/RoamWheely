@@ -86,30 +86,134 @@
 		72D016A526A1B6AB00710743 /* RoamWheely */ = {
 			isa = PBXGroup;
 			children = (
+				72D016E026A38E3E00710743 /* Utilities */,
+				72D016E226A38E7400710743 /* Extensions */,
+				72D016E126A38E6000710743 /* Manager */,
+				72D016E326A38E9200710743 /* Model */,
+				72D016E426A38EA400710743 /* Custom Views */,
+				72D016E526A38EAA00710743 /* Screens */,
+				72D016E626A38EAE00710743 /* Support */,
+				72D016B426A1B6AF00710743 /* Info.plist */,
+			);
+			path = RoamWheely;
+			sourceTree = "<group>";
+		};
+		72D016E026A38E3E00710743 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				72D016C226A1BA9D00710743 /* Constants.swift */,
+				72D016DA26A36BB300710743 /* RWErrorMessage.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		72D016E126A38E6000710743 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				72D016D826A36B6500710743 /* PersistenceManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		72D016E226A38E7400710743 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				72D016BC26A1B95800710743 /* UIViewController+Ext.swift */,
+				72D016BE26A1B9C500710743 /* UITableView+Ext.swift */,
+				72D016D026A20C5500710743 /* UIView+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		72D016E326A38E9200710743 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				72D016D426A343B400710743 /* Option.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		72D016E426A38EA400710743 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				72D016E826A38EEA00710743 /* Views */,
+				72D016EC26A38F1100710743 /* View Controllers */,
+				72D016EB26A38F0600710743 /* TextFields */,
+				72D016EA26A38F0000710743 /* Buttons */,
+				72D016E926A38EF700710743 /* Labels */,
+				72D016E726A38EDC00710743 /* Cells */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		72D016E526A38EAA00710743 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				72D016AA26A1B6AB00710743 /* OptionsVC.swift */,
+				72D016DE26A3858100710743 /* AddOptionsVC.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		72D016E626A38EAE00710743 /* Support */ = {
+			isa = PBXGroup;
+			children = (
 				72D016A626A1B6AB00710743 /* AppDelegate.swift */,
 				72D016A826A1B6AB00710743 /* SceneDelegate.swift */,
 				72D016AF26A1B6AF00710743 /* Assets.xcassets */,
 				72D016B126A1B6AF00710743 /* LaunchScreen.storyboard */,
-				72D016B426A1B6AF00710743 /* Info.plist */,
-				72D016AA26A1B6AB00710743 /* OptionsVC.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		72D016E726A38EDC00710743 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				72D016C426A1BCBC00710743 /* OptionsCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		72D016E826A38EEA00710743 /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				72D016BA26A1B8FC00710743 /* RoamWheelyEmptyStateView.swift */,
-				72D016DE26A3858100710743 /* AddOptionsVC.swift */,
-				72D016BC26A1B95800710743 /* UIViewController+Ext.swift */,
-				72D016BE26A1B9C500710743 /* UITableView+Ext.swift */,
+				72D016CA26A20B6F00710743 /* RoamWheelyContainerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		72D016E926A38EF700710743 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
 				72D016C026A1BA0500710743 /* RoamWheelyTitleLabel.swift */,
 				72D016CC26A20BA500710743 /* RoamWheelyBodyLabel.swift */,
-				72D016D026A20C5500710743 /* UIView+Ext.swift */,
-				72D016C226A1BA9D00710743 /* Constants.swift */,
-				72D016C426A1BCBC00710743 /* OptionsCell.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		72D016EA26A38F0000710743 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
 				72D016C626A1CF4B00710743 /* RoamWheelyButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		72D016EB26A38F0600710743 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
 				72D016C826A2084B00710743 /* RoamWheelyTextField.swift */,
-				72D016CA26A20B6F00710743 /* RoamWheelyContainerView.swift */,
-				72D016D426A343B400710743 /* Option.swift */,
-				72D016D826A36B6500710743 /* PersistenceManager.swift */,
-				72D016DA26A36BB300710743 /* RWErrorMessage.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		72D016EC26A38F1100710743 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				72D016DC26A36ED000710743 /* RoamWheelyAlertVC.swift */,
 			);
-			path = RoamWheely;
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

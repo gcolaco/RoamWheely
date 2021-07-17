@@ -9,6 +9,7 @@ import UIKit
 
 enum Images {
     static let emptyStateLogo       = UIImage(named: "empty-state-logo")
+    static let WheelOfFortune       = UIImage(named: "wheel-of-fortune")
 }
 
 

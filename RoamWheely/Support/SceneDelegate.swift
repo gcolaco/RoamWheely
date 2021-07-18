@@ -20,8 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
         
-        let navigationController = UINavigationController(rootViewController: OptionsVC())
+        let navigationController = UINavigationController(rootViewController: InitialVC())
         window?.rootViewController = navigationController
+        UINavigationBar.appearance().tintColor = .systemOrange
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

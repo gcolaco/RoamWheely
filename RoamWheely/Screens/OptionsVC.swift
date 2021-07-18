@@ -24,6 +24,7 @@ class OptionsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
         getOptions()
     }
     
@@ -80,8 +81,6 @@ class OptionsVC: UIViewController {
     
     @objc private func addFavoriteButtonPressed() {
         let addOptionVC = AddOptionsVC()
-        addOptionVC.modalPresentationStyle  = .overFullScreen
-        addOptionVC.modalTransitionStyle    = .crossDissolve
         navigationController?.pushViewController(addOptionVC, animated: true)
     }
 

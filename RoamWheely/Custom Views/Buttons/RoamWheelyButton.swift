@@ -34,10 +34,16 @@ class RoamWheelyButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
-    
-    func set(backgroundColor: UIColor, title: String) {
-        self.backgroundColor = backgroundColor
-        setTitle(title, for: .normal)
+    func buttonAnimation(_ viewToAnimate: UIView) {
+        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.5, options: .curveEaseIn) {
+            
+            viewToAnimate.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+            
+        } completion: { _ in
+            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 2, options: .curveEaseIn) {
+                viewToAnimate.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
+        }
     }
 
 }

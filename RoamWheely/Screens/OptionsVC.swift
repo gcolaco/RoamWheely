@@ -88,9 +88,11 @@ class OptionsVC: UIViewController {
         goToWheelyBtn.layer.cornerRadius = 50
         goToWheelyBtn.addTarget(self, action: #selector(goToWheelyButtonPressed), for: .touchUpInside)
         
+        let centerXConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 100 : 125
+        
         NSLayoutConstraint.activate([
             goToWheelyBtn.bottomAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.bottomAnchor, constant: -30),
-            goToWheelyBtn.centerXAnchor.constraint(equalTo: tableView.centerXAnchor, constant: 120),
+            goToWheelyBtn.centerXAnchor.constraint(equalTo: tableView.centerXAnchor, constant: centerXConstant),
             goToWheelyBtn.widthAnchor.constraint(equalToConstant: 100),
             goToWheelyBtn.heightAnchor.constraint(equalToConstant: 100)
         

@@ -40,11 +40,14 @@ class AddOptionsVC: UIViewController {
         wheelLogo.translatesAutoresizingMaskIntoConstraints = false
         wheelLogo.image = Images.wheelOfFortune
         
+        let imgSquarSizeConstant: CGFloat   = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 100 : 150
+        let topConstraintConstant: CGFloat  = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 16 : 30
+
         NSLayoutConstraint.activate([
-            wheelLogo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            wheelLogo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant),
             wheelLogo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            wheelLogo.heightAnchor.constraint(equalToConstant: 200),
-            wheelLogo.widthAnchor.constraint(equalToConstant: 200)
+            wheelLogo.heightAnchor.constraint(equalToConstant: imgSquarSizeConstant),
+            wheelLogo.widthAnchor.constraint(equalToConstant: imgSquarSizeConstant)
         ])
     }
     

@@ -12,15 +12,26 @@ class WheelyVC: UIViewController {
     private let spinWheelButton         = RoamWheelyButton(backgroundColor: .systemPurple, title: "Spin")
     private let goToOptionsVCButton     = RoamWheelyButton(backgroundColor: .systemOrange, title: "+")
     private let backgroundImage         = UIImageView()
+    private let winnerView              = RoamWheelyWinnerView(frame: .zero)
     
     private var wheelOptions:[Option]   = []
-
+    
+    private let visualEffectView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .light)
+        let view = UIVisualEffectView(effect: blurEffect)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+        
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         view.addSubviews(backgroundImage, goToOptionsVCButton)
         configureBackgroundImage()
         configureButtons()
+        configureVisualEffectView()
     }
     
     
@@ -81,9 +92,39 @@ class WheelyVC: UIViewController {
         }
 
         let roamWheely = RoamWheely(center: CGPoint.init(x: self.view.frame.width/2, y: (self.view.frame.height/2) - 80), diameter: 300, slices: slices)
-        print("\(self.view.frame.height/2)")
         roamWheely.delegate = self
         view.addSubview(roamWheely)
+    }
+    
+    
+    private func configureVisualEffectView() {
+        view.addSubview(visualEffectView)
+        visualEffectView.pinToEdges(of: view)
+        
+        visualEffectView.alpha  = 0
+        winnerView.alpha        = 0
+    }
+    
+    
+    private func configureWinnerView() {
+        view.addSubview(winnerView)
+
+        NSLayoutConstraint.activate([
+            winnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            winnerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -40),
+            winnerView.widthAnchor.constraint(equalToConstant: view.frame.width - 64),
+            winnerView.heightAnchor.constraint(equalToConstant: view.frame.width - 64)
+        ])
+        
+        winnerView.transform    = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        winnerView.delegate     = self
+        
+        UIView.animate(withDuration: 0.5) {
+            self.visualEffectView.alpha = 1
+            self.winnerView.alpha       = 1
+            self.winnerView.transform   = CGAffineTransform.identity
+        }
+        
     }
 
     
@@ -93,16 +134,22 @@ class WheelyVC: UIViewController {
 }
 
 
-extension WheelyVC : RoamWheelyDelegate {
+extension WheelyVC: RoamWheelyDelegate {
     func shouldSelectObject() -> Int? {
         return Int.random(in: 0...wheelOptions.count)
     }
     
-    //If you want to get notified when the selection is complete the implement this function also
     func finishedSelecting(index: Int?, error: Error?) {
         if index != nil {
+            self.configureWinnerView()
             print("\(wheelOptions[index!].optionName)")
         }
     }
-    
+}
+
+extension WheelyVC: RoamWheelyWinnerViewDelegate {
+    func handleDismissView() {
+        spinWheelButton.popUpAnimatedView(visualEffectView: visualEffectView, popUpView: winnerView)
+    }
+
 }

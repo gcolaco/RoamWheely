@@ -12,7 +12,7 @@ enum Images {
     static let wheelOfFortune       = UIImage(named: "wheel-of-fortune")
     static let backgroundImg        = UIImage(named: "bgImg")
     static let wheelBtnImg          = UIImage(named: "wheelBtnLogo")
-    
+    static let winnerImg            = UIImage(named: "trophy")
 }
 
 

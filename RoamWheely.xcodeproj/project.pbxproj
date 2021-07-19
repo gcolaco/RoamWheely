@@ -35,6 +35,7 @@
 		72D0171E26A4A96D00710743 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0171D26A4A96D00710743 /* UIColor+Ext.swift */; };
 		72D0172026A4A99600710743 /* CGFloat+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0171F26A4A99600710743 /* CGFloat+Ext.swift */; };
 		72D0172426A5019C00710743 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0172326A5019C00710743 /* UIButton+Ext.swift */; };
+		72D0172626A516DA00710743 /* RoamWheelyWinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0172526A516DA00710743 /* RoamWheelyWinnerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		72D0171D26A4A96D00710743 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		72D0171F26A4A99600710743 /* CGFloat+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Ext.swift"; sourceTree = "<group>"; };
 		72D0172326A5019C00710743 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
+		72D0172526A516DA00710743 /* RoamWheelyWinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoamWheelyWinnerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 			children = (
 				72D016BA26A1B8FC00710743 /* RoamWheelyEmptyStateView.swift */,
 				72D016CA26A20B6F00710743 /* RoamWheelyContainerView.swift */,
+				72D0172526A516DA00710743 /* RoamWheelyWinnerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				72D016AB26A1B6AB00710743 /* OptionsVC.swift in Sources */,
 				72D016D126A20C5500710743 /* UIView+Ext.swift in Sources */,
 				72D016CD26A20BA500710743 /* RoamWheelyBodyLabel.swift in Sources */,
+				72D0172626A516DA00710743 /* RoamWheelyWinnerView.swift in Sources */,
 				72D016BB26A1B8FC00710743 /* RoamWheelyEmptyStateView.swift in Sources */,
 				72D0171A26A49FCF00710743 /* Slice.swift in Sources */,
 				72D016BD26A1B95800710743 /* UIViewController+Ext.swift in Sources */,

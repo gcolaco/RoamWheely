@@ -10,12 +10,12 @@ import UIKit
 class AddOptionsVC: UIViewController {
     
     // MARK: - Properties
-    let wheelLogo       = UIImageView()
-    let messageLabel    = RoamWheelyBodyLabel(textAlignment: .center)
-    let optionTxtField  = RoamWheelyTextField()
-    let actionButton    = RoamWheelyButton(backgroundColor: .systemGreen, title: "Add option")
+    private let wheelLogo       = UIImageView()
+    private let messageLabel    = RoamWheelyBodyLabel(textAlignment: .center)
+    private let optionTxtField  = RoamWheelyTextField()
+    private let actionButton    = RoamWheelyButton(backgroundColor: .systemGreen, title: "Add option")
     
-    var isOptionEntered: Bool {
+    private var isOptionEntered: Bool {
         return !optionTxtField.text!.isEmpty
     }
 

@@ -11,7 +11,7 @@ class OptionsVC: UIViewController {
     
     // MARK: - Properties
     private let tableView       = UITableView()
-    private let goToWheelyBtn   = RoamWheelyButton(backgroundColor: .systemPurple, image: Images.wheelBtnImg!)
+    private let goToWheelyBtn   = RoamWheelyButton(backgroundColor: .systemBlue, image: Images.wheelBtnImg!)
 
     
     var options: [Option] = []
@@ -21,15 +21,16 @@ class OptionsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureVC()
-        configureTableView()
         configureGoToWheelyButton()
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        configureTableView()
         navigationController?.setNavigationBarHidden(false, animated: true)
         getOptions()
+        tableView.reloadData()
     }
     
     

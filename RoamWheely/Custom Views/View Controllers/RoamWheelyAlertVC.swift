@@ -10,10 +10,10 @@ import UIKit
 class RoamWheelyAlertVC: UIViewController {
 
     // MARK: - Properties
-    let containerView   = RoamWheelyContainerView()
-    let titleLabel      = RoamWheelyTitleLabel(textAlignment: .center, fontSize: 20)
-    let messageLabel    = RoamWheelyBodyLabel(textAlignment: .center)
-    let actionButton    = RoamWheelyButton(backgroundColor: .systemPink, title: "Ok")
+    private let containerView   = RoamWheelyContainerView()
+    private let titleLabel      = RoamWheelyTitleLabel(textAlignment: .center, fontSize: 20)
+    private let messageLabel    = RoamWheelyBodyLabel(textAlignment: .center)
+    private let actionButton    = RoamWheelyButton(backgroundColor: .systemPink, title: "Ok")
     
     var alertTitle: String?
     var message: String?

@@ -30,6 +30,7 @@ class OptionsCell: UITableViewCell {
     
     func set(option: Option) {
         optionLabel.text = option.optionName
+        bgView.makeGradientBg(.systemOrange, .systemRed)
     }
     
     
@@ -38,7 +39,6 @@ class OptionsCell: UITableViewCell {
         bgView.translatesAutoresizingMaskIntoConstraints = false
         
         let padding: CGFloat        = 12
-        bgView.backgroundColor      = .systemOrange
         
         bgView.layer.cornerRadius   = 20
         bgView.clipsToBounds        = true
@@ -50,7 +50,7 @@ class OptionsCell: UITableViewCell {
             bgView.heightAnchor.constraint(equalToConstant: 100)
         
         ])
-        
+             
     }
     
     

@@ -93,7 +93,7 @@ class RoamWheelyWinnerView: UIView {
     }
     
     
-    @objc func handleActionButton() {
+    @objc private func handleActionButton() {
         delegate?.handleDismissView()
     }
     

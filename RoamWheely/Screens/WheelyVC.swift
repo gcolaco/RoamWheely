@@ -53,7 +53,6 @@ class WheelyVC: UIViewController {
             switch result {
             case .success(let options):
                 self.wheelOptions = options
-                print("WheelOptions array count is: \(self.wheelOptions.count)")
             case .failure(let error):
                 self.presentRoamWheelyALertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }

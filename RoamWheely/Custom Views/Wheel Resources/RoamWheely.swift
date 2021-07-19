@@ -84,11 +84,9 @@ class RoamWheely: UIView {
                     sector.setNeedsDisplay()
                 }
             } else {
-                #warning("2 slices minimum error")
                 performFinish(error: RWErrorMessage.notEnoughSlices)
             }
         } else{
-            #warning("no slice error")
             performFinish(error: RWErrorMessage.notEnoughSlices)
         }
     }
@@ -142,12 +140,10 @@ class RoamWheely: UIView {
             if (selectionIndex >= 0 && selectionIndex < slicesCount ) {
                 performSelection()
             } else {
-                #warning("Invalid selection index")
-                performFinish(error: RWErrorMessage.notEnoughSlices)
+                performFinish(error: RWErrorMessage.genericError)
             }
             
         } else {
-            #warning("No slices")
             performFinish(error: RWErrorMessage.notEnoughSlices)
         }
     }
@@ -223,8 +219,7 @@ extension RoamWheely : CAAnimationDelegate {
         if flag{
             performFinish(error: nil)
         } else {
-            #warning("generic error")
-            self.performFinish(error: RWErrorMessage.notEnoughSlices)
+            self.performFinish(error: RWErrorMessage.genericError)
         }
     }
 }

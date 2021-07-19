@@ -107,10 +107,14 @@ class OptionsVC: UIViewController {
     
     // MARK: - Selectors and actions
     @objc private func goToWheelyButtonPressed() {
-        let destVC = WheelyVC()
-        destVC.modalPresentationStyle  = .overFullScreen
-        destVC.modalTransitionStyle    = .crossDissolve
-        self.present(destVC, animated: true)
+        if options.count >= 2 {
+            let destVC = WheelyVC()
+            destVC.modalPresentationStyle  = .overFullScreen
+            destVC.modalTransitionStyle    = .crossDissolve
+            self.present(destVC, animated: true)
+        } else {
+            presentRoamWheelyALertOnMainThread(title: "🚨", message: "You need to add at least two options before playing with the Roam Wheely!", buttonTitle: "Ok")
+        }
     }
     
     

@@ -26,7 +26,6 @@ extension UIButton {
             popUpView.transform     = CGAffineTransform(scaleX: 1.3, y: 1.3)
         }) { (_) in
             popUpView.removeFromSuperview()
-            print("Did remove pop up window..")
         }
     }
        

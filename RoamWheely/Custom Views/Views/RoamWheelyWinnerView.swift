@@ -13,10 +13,10 @@ protocol RoamWheelyWinnerViewDelegate {
 
 class RoamWheelyWinnerView: UIView {
     
-    private let winnerImg       = UIImageView()
-    private let messageLbl      = RoamWheelyTitleLabel(textAlignment: .center, fontSize: 22)
+    let winnerImg       = UIImageView()
+    let messageLbl      = RoamWheelyTitleLabel(textAlignment: .center, fontSize: 22)
     let winnerLbl               = RoamWheelyTitleLabel(textAlignment: .center, fontSize: 36)
-    private let actionButton    = RoamWheelyButton(backgroundColor: .systemGreen, title: "Ok!")
+    let actionButton    = RoamWheelyButton(backgroundColor: .systemBlue, title: "Ok!")
     
     var delegate: RoamWheelyWinnerViewDelegate?
 
@@ -40,9 +40,10 @@ class RoamWheelyWinnerView: UIView {
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
         
-        backgroundColor     = .white
+        backgroundColor     = .systemBackground
         
-        layer.cornerRadius  = 10
+        
+        layer.cornerRadius  = 16
     }
     
     

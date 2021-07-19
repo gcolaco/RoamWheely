@@ -10,7 +10,9 @@ import UIKit
 class OptionsVC: UIViewController {
     
     // MARK: - Properties
-    private let tableView       = UITableView()
+    
+    //tableView is not private so I can use it for unit tests.
+    let tableView               = UITableView()
     private let goToWheelyBtn   = RoamWheelyButton(backgroundColor: .systemBlue, image: Images.wheelBtnImg!)
 
     
@@ -39,7 +41,7 @@ class OptionsVC: UIViewController {
         view.backgroundColor                                    = .systemBackground
         title                                                   = "Options"
         navigationController?.navigationBar.prefersLargeTitles  = true
-        let addOptions = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addFavoriteButtonPressed))
+        let addOptions = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed))
         navigationItem.rightBarButtonItem                       = addOptions
         navigationItem.rightBarButtonItem?.tintColor            = .systemOrange
     }
@@ -119,7 +121,7 @@ class OptionsVC: UIViewController {
     }
     
     
-    @objc private func addFavoriteButtonPressed() {
+    @objc private func addButtonPressed() {
         let addOptionVC = AddOptionsVC()
         navigationController?.pushViewController(addOptionVC, animated: true)
     }

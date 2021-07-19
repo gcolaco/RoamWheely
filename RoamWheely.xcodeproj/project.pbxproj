@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72C76CDD26A5ED2C008FEF34 /* RoamWheelyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C76CDC26A5ED2C008FEF34 /* RoamWheelyTests.swift */; };
 		72D016A726A1B6AB00710743 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016A626A1B6AB00710743 /* AppDelegate.swift */; };
 		72D016A926A1B6AB00710743 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016A826A1B6AB00710743 /* SceneDelegate.swift */; };
 		72D016AB26A1B6AB00710743 /* OptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016AA26A1B6AB00710743 /* OptionsVC.swift */; };
@@ -38,7 +39,20 @@
 		72D0172626A516DA00710743 /* RoamWheelyWinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0172526A516DA00710743 /* RoamWheelyWinnerView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		72C76CDF26A5ED2C008FEF34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 72D0169B26A1B6AB00710743 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72D016A226A1B6AB00710743;
+			remoteInfo = RoamWheely;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		72C76CDA26A5ED2C008FEF34 /* RoamWheelyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoamWheelyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		72C76CDC26A5ED2C008FEF34 /* RoamWheelyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoamWheelyTests.swift; sourceTree = "<group>"; };
+		72C76CDE26A5ED2C008FEF34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72D016A326A1B6AB00710743 /* RoamWheely.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoamWheely.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72D016A626A1B6AB00710743 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72D016A826A1B6AB00710743 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +87,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		72C76CD726A5ED2C008FEF34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		72D016A026A1B6AB00710743 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -83,10 +104,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		72C76CDB26A5ED2C008FEF34 /* RoamWheelyTests */ = {
+			isa = PBXGroup;
+			children = (
+				72C76CDC26A5ED2C008FEF34 /* RoamWheelyTests.swift */,
+				72C76CDE26A5ED2C008FEF34 /* Info.plist */,
+			);
+			path = RoamWheelyTests;
+			sourceTree = "<group>";
+		};
 		72D0169A26A1B6AB00710743 = {
 			isa = PBXGroup;
 			children = (
 				72D016A526A1B6AB00710743 /* RoamWheely */,
+				72C76CDB26A5ED2C008FEF34 /* RoamWheelyTests */,
 				72D016A426A1B6AB00710743 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				72D016A326A1B6AB00710743 /* RoamWheely.app */,
+				72C76CDA26A5ED2C008FEF34 /* RoamWheelyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -251,6 +283,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		72C76CD926A5ED2C008FEF34 /* RoamWheelyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72C76CE326A5ED2C008FEF34 /* Build configuration list for PBXNativeTarget "RoamWheelyTests" */;
+			buildPhases = (
+				72C76CD626A5ED2C008FEF34 /* Sources */,
+				72C76CD726A5ED2C008FEF34 /* Frameworks */,
+				72C76CD826A5ED2C008FEF34 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				72C76CE026A5ED2C008FEF34 /* PBXTargetDependency */,
+			);
+			name = RoamWheelyTests;
+			productName = RoamWheelyTests;
+			productReference = 72C76CDA26A5ED2C008FEF34 /* RoamWheelyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		72D016A226A1B6AB00710743 /* RoamWheely */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 72D016B726A1B6AF00710743 /* Build configuration list for PBXNativeTarget "RoamWheely" */;
@@ -277,6 +327,10 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					72C76CD926A5ED2C008FEF34 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 72D016A226A1B6AB00710743;
+					};
 					72D016A226A1B6AB00710743 = {
 						CreatedOnToolsVersion = 12.5;
 					};
@@ -296,11 +350,19 @@
 			projectRoot = "";
 			targets = (
 				72D016A226A1B6AB00710743 /* RoamWheely */,
+				72C76CD926A5ED2C008FEF34 /* RoamWheelyTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		72C76CD826A5ED2C008FEF34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		72D016A126A1B6AB00710743 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -313,6 +375,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		72C76CD626A5ED2C008FEF34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72C76CDD26A5ED2C008FEF34 /* RoamWheelyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		72D0169F26A1B6AB00710743 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -349,6 +419,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		72C76CE026A5ED2C008FEF34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 72D016A226A1B6AB00710743 /* RoamWheely */;
+			targetProxy = 72C76CDF26A5ED2C008FEF34 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		72D016B126A1B6AF00710743 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -361,6 +439,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		72C76CE126A5ED2C008FEF34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UBXA6XL8QB;
+				INFOPLIST_FILE = RoamWheelyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gustavo.RoamWheelyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RoamWheely.app/RoamWheely";
+			};
+			name = Debug;
+		};
+		72C76CE226A5ED2C008FEF34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UBXA6XL8QB;
+				INFOPLIST_FILE = RoamWheelyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.gustavo.RoamWheelyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RoamWheely.app/RoamWheely";
+			};
+			name = Release;
+		};
 		72D016B526A1B6AF00710743 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -492,7 +610,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gustavo.RoamWheely;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -511,13 +629,22 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gustavo.RoamWheely;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		72C76CE326A5ED2C008FEF34 /* Build configuration list for PBXNativeTarget "RoamWheelyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72C76CE126A5ED2C008FEF34 /* Debug */,
+				72C76CE226A5ED2C008FEF34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		72D0169E26A1B6AB00710743 /* Build configuration list for PBXProject "RoamWheely" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

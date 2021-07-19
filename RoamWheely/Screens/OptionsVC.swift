@@ -10,6 +10,7 @@ import UIKit
 class OptionsVC: UIViewController {
     
     private let tableView       = UITableView()
+    private let goToWheelyBtn   = RoamWheelyButton(backgroundColor: .systemPurple, image: Images.wheelBtnImg!)
 
     
     var options: [Option] = []
@@ -19,6 +20,7 @@ class OptionsVC: UIViewController {
         super.viewDidLoad()
         configureVC()
         configureTableView()
+        configureGoToWheelyButton()
     }
     
     
@@ -42,9 +44,11 @@ class OptionsVC: UIViewController {
     private func updateUIWith(with options: [Option]) {
         if options.isEmpty {
             self.showEmptyStateView(with: "You don't have any options. Add one by tapping the \"+\" sign!", in: self.view)
+            self.goToWheelyBtn.isHidden = true
         } else {
             self.options = options
             DispatchQueue.main.async {
+                self.goToWheelyBtn.isHidden = false
                 self.tableView.reloadData()
                 self.view.bringSubviewToFront(self.tableView)
             }
@@ -78,6 +82,26 @@ class OptionsVC: UIViewController {
         tableView.register(OptionsCell.self, forCellReuseIdentifier: OptionsCell.reuseID)
     }
     
+    
+    private func configureGoToWheelyButton() {
+        tableView.addSubview(goToWheelyBtn)
+        goToWheelyBtn.layer.cornerRadius = 50
+        goToWheelyBtn.addTarget(self, action: #selector(goToWheelyButtonPressed), for: .touchUpInside)
+        
+        NSLayoutConstraint.activate([
+            goToWheelyBtn.bottomAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.bottomAnchor, constant: -30),
+            goToWheelyBtn.centerXAnchor.constraint(equalTo: tableView.centerXAnchor, constant: 120),
+            goToWheelyBtn.widthAnchor.constraint(equalToConstant: 100),
+            goToWheelyBtn.heightAnchor.constraint(equalToConstant: 100)
+        
+        ])
+        
+    }
+    
+    @objc private func goToWheelyButtonPressed() {
+        let destVC = WheelyVC()
+        navigationController?.pushViewController(destVC, animated: true)
+    }
     
     @objc private func addFavoriteButtonPressed() {
         let addOptionVC = AddOptionsVC()
@@ -122,6 +146,7 @@ extension OptionsVC: UITableViewDelegate, UITableViewDataSource {
         
         if options.isEmpty {
             showEmptyStateView(with: "You don't have any options. Add one by tapping the \"+\" sign!", in: self.view)
+            self.goToWheelyBtn.isHidden = true
         }
         
         

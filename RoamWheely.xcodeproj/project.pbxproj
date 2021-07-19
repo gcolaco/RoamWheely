@@ -28,7 +28,13 @@
 		72D016DB26A36BB300710743 /* RWErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016DA26A36BB300710743 /* RWErrorMessage.swift */; };
 		72D016DD26A36ED000710743 /* RoamWheelyAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016DC26A36ED000710743 /* RoamWheelyAlertVC.swift */; };
 		72D016DF26A3858100710743 /* AddOptionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016DE26A3858100710743 /* AddOptionsVC.swift */; };
-		72D016F126A3A8AF00710743 /* InitialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016F026A3A8AF00710743 /* InitialVC.swift */; };
+		72D016F126A3A8AF00710743 /* WheelyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D016F026A3A8AF00710743 /* WheelyVC.swift */; };
+		72D0171626A49F1800710743 /* RoamWheely.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0171526A49F1800710743 /* RoamWheely.swift */; };
+		72D0171A26A49FCF00710743 /* Slice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0171926A49FCF00710743 /* Slice.swift */; };
+		72D0171C26A4A48400710743 /* RoamWheelySlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0171B26A4A48400710743 /* RoamWheelySlice.swift */; };
+		72D0171E26A4A96D00710743 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0171D26A4A96D00710743 /* UIColor+Ext.swift */; };
+		72D0172026A4A99600710743 /* CGFloat+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0171F26A4A99600710743 /* CGFloat+Ext.swift */; };
+		72D0172426A5019C00710743 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0172326A5019C00710743 /* UIButton+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +61,13 @@
 		72D016DA26A36BB300710743 /* RWErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWErrorMessage.swift; sourceTree = "<group>"; };
 		72D016DC26A36ED000710743 /* RoamWheelyAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoamWheelyAlertVC.swift; sourceTree = "<group>"; };
 		72D016DE26A3858100710743 /* AddOptionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOptionsVC.swift; sourceTree = "<group>"; };
-		72D016F026A3A8AF00710743 /* InitialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialVC.swift; sourceTree = "<group>"; };
+		72D016F026A3A8AF00710743 /* WheelyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelyVC.swift; sourceTree = "<group>"; };
+		72D0171526A49F1800710743 /* RoamWheely.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoamWheely.swift; sourceTree = "<group>"; };
+		72D0171926A49FCF00710743 /* Slice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slice.swift; sourceTree = "<group>"; };
+		72D0171B26A4A48400710743 /* RoamWheelySlice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoamWheelySlice.swift; sourceTree = "<group>"; };
+		72D0171D26A4A96D00710743 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		72D0171F26A4A99600710743 /* CGFloat+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Ext.swift"; sourceTree = "<group>"; };
+		72D0172326A5019C00710743 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +135,9 @@
 				72D016BC26A1B95800710743 /* UIViewController+Ext.swift */,
 				72D016BE26A1B9C500710743 /* UITableView+Ext.swift */,
 				72D016D026A20C5500710743 /* UIView+Ext.swift */,
+				72D0171D26A4A96D00710743 /* UIColor+Ext.swift */,
+				72D0171F26A4A99600710743 /* CGFloat+Ext.swift */,
+				72D0172326A5019C00710743 /* UIButton+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -138,6 +153,7 @@
 		72D016E426A38EA400710743 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				72D016F426A45F7B00710743 /* Wheel Resources */,
 				72D016E826A38EEA00710743 /* Views */,
 				72D016EC26A38F1100710743 /* View Controllers */,
 				72D016EB26A38F0600710743 /* TextFields */,
@@ -151,8 +167,8 @@
 		72D016E526A38EAA00710743 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				72D016F026A3A8AF00710743 /* InitialVC.swift */,
 				72D016AA26A1B6AB00710743 /* OptionsVC.swift */,
+				72D016F026A3A8AF00710743 /* WheelyVC.swift */,
 				72D016DE26A3858100710743 /* AddOptionsVC.swift */,
 			);
 			path = Screens;
@@ -217,6 +233,16 @@
 				72D016DC26A36ED000710743 /* RoamWheelyAlertVC.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		72D016F426A45F7B00710743 /* Wheel Resources */ = {
+			isa = PBXGroup;
+			children = (
+				72D0171526A49F1800710743 /* RoamWheely.swift */,
+				72D0171926A49FCF00710743 /* Slice.swift */,
+				72D0171B26A4A48400710743 /* RoamWheelySlice.swift */,
+			);
+			path = "Wheel Resources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,9 +320,11 @@
 				72D016D126A20C5500710743 /* UIView+Ext.swift in Sources */,
 				72D016CD26A20BA500710743 /* RoamWheelyBodyLabel.swift in Sources */,
 				72D016BB26A1B8FC00710743 /* RoamWheelyEmptyStateView.swift in Sources */,
+				72D0171A26A49FCF00710743 /* Slice.swift in Sources */,
 				72D016BD26A1B95800710743 /* UIViewController+Ext.swift in Sources */,
 				72D016C726A1CF4B00710743 /* RoamWheelyButton.swift in Sources */,
 				72D016BF26A1B9C500710743 /* UITableView+Ext.swift in Sources */,
+				72D0171C26A4A48400710743 /* RoamWheelySlice.swift in Sources */,
 				72D016A726A1B6AB00710743 /* AppDelegate.swift in Sources */,
 				72D016DF26A3858100710743 /* AddOptionsVC.swift in Sources */,
 				72D016A926A1B6AB00710743 /* SceneDelegate.swift in Sources */,
@@ -304,8 +332,12 @@
 				72D016DD26A36ED000710743 /* RoamWheelyAlertVC.swift in Sources */,
 				72D016DB26A36BB300710743 /* RWErrorMessage.swift in Sources */,
 				72D016C926A2084B00710743 /* RoamWheelyTextField.swift in Sources */,
+				72D0172026A4A99600710743 /* CGFloat+Ext.swift in Sources */,
+				72D0172426A5019C00710743 /* UIButton+Ext.swift in Sources */,
 				72D016C526A1BCBC00710743 /* OptionsCell.swift in Sources */,
-				72D016F126A3A8AF00710743 /* InitialVC.swift in Sources */,
+				72D016F126A3A8AF00710743 /* WheelyVC.swift in Sources */,
+				72D0171626A49F1800710743 /* RoamWheely.swift in Sources */,
+				72D0171E26A4A96D00710743 /* UIColor+Ext.swift in Sources */,
 				72D016D926A36B6500710743 /* PersistenceManager.swift in Sources */,
 				72D016CB26A20B6F00710743 /* RoamWheelyContainerView.swift in Sources */,
 			);

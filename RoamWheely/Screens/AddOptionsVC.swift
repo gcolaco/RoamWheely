@@ -38,7 +38,7 @@ class AddOptionsVC: UIViewController {
     
     private func configureWheelImg() {
         wheelLogo.translatesAutoresizingMaskIntoConstraints = false
-        wheelLogo.image = Images.WheelOfFortune
+        wheelLogo.image = Images.wheelOfFortune
         
         NSLayoutConstraint.activate([
             wheelLogo.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),

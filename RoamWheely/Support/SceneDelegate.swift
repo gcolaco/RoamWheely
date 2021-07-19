@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
         
-        let navigationController = UINavigationController(rootViewController: InitialVC())
+        let navigationController = UINavigationController(rootViewController: OptionsVC())
         window?.rootViewController = navigationController
         UINavigationBar.appearance().tintColor = .systemOrange
         

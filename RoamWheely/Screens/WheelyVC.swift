@@ -1,5 +1,5 @@
 //
-//  InitialVC.swift
+//  WheelyVC.swift
 //  RoamWheely
 //
 //  Created by Gustavo Colaço on 17/07/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InitialVC: UIViewController {
+class WheelyVC: UIViewController {
     
     private let spinWheelButton         = RoamWheelyButton(backgroundColor: .systemPurple, title: "Spin")
     private let goToOptionsVCButton     = RoamWheelyButton(backgroundColor: .systemOrange, title: "+")
@@ -18,7 +18,7 @@ class InitialVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        view.addSubviews(backgroundImage, spinWheelButton, goToOptionsVCButton)
+        view.addSubviews(backgroundImage, goToOptionsVCButton)
         configureBackgroundImage()
         configureButtons()
     }
@@ -28,6 +28,7 @@ class InitialVC: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
         getOptions()
+        configureRoamWheely()
     }
     
     
@@ -56,31 +57,52 @@ class InitialVC: UIViewController {
     
     
     private func configureButtons() {
-        spinWheelButton.addTarget(self, action: #selector(spinWheel), for: .touchUpInside)
         goToOptionsVCButton.addTarget(self, action: #selector(goToOptionsVC), for: .touchUpInside)
         goToOptionsVCButton.layer.cornerRadius = 25
         
         NSLayoutConstraint.activate([
-            spinWheelButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
-            spinWheelButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            spinWheelButton.widthAnchor.constraint(equalToConstant: 220),
-            spinWheelButton.heightAnchor.constraint(equalToConstant: 50),
             
             goToOptionsVCButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
-            goToOptionsVCButton.leadingAnchor.constraint(equalTo: spinWheelButton.trailingAnchor, constant: 16),
+            goToOptionsVCButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             goToOptionsVCButton.widthAnchor.constraint(equalToConstant: 50),
             goToOptionsVCButton.heightAnchor.constraint(equalToConstant: 50)
             
         ])
     }
     
-    @objc private func spinWheel() {
-        spinWheelButton.buttonAnimation(spinWheelButton)
-        
+    
+    private func configureRoamWheely() {
+        var slices = [Slice]()
+
+        wheelOptions.forEach { op in
+            let slice = Slice(option: op.optionName)
+            slice.color = .random()
+            slices.append(slice)
+        }
+
+        let roamWheely = RoamWheely(center: CGPoint.init(x: self.view.frame.width/2, y: (self.view.frame.height/2) - 80), diameter: 300, slices: slices)
+        print("\(self.view.frame.height/2)")
+        roamWheely.delegate = self
+        view.addSubview(roamWheely)
     }
+
     
     @objc private func goToOptionsVC() {
-        let destVC = OptionsVC()
-        navigationController?.pushViewController(destVC, animated: true)
+        navigationController?.popViewController(animated: true)
     }
+}
+
+
+extension WheelyVC : RoamWheelyDelegate {
+    func shouldSelectObject() -> Int? {
+        return Int.random(in: 0...wheelOptions.count)
+    }
+    
+    //If you want to get notified when the selection is complete the implement this function also
+    func finishedSelecting(index: Int?, error: Error?) {
+        if index != nil {
+            print("\(wheelOptions[index!].optionName)")
+        }
+    }
+    
 }

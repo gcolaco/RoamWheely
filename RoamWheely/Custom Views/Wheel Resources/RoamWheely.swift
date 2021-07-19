@@ -108,7 +108,7 @@ class RoamWheely: UIView {
     
     private func addStartBttn() {
         let size    = CGSize.init(width: self.bounds.width * 0.2, height: self.bounds.height * 0.2)
-        let point   = CGPoint.init(x:  self.frame.width/2 - size.width/2, y: self.frame.height/2 - size.height/2 + 140)
+        let point   = CGPoint.init(x:  self.frame.width/2 - size.width/2, y: self.frame.height/2 - size.height/2 + 130)
         
         playButton.setTitle("Spin", for: .normal)
         playButton.frame = CGRect(origin: point, size: size)

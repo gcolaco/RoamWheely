@@ -76,7 +76,7 @@ class RoamWheelyWinnerView: UIView {
             winnerLbl.topAnchor.constraint(equalTo: messageLbl.bottomAnchor, constant: 16),
             winnerLbl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             winnerLbl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            winnerLbl.heightAnchor.constraint(equalToConstant: 25)
+            winnerLbl.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     

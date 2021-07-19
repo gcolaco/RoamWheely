@@ -114,7 +114,7 @@ class WheelyVC: UIViewController {
             winnerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             winnerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -40),
             winnerView.widthAnchor.constraint(equalToConstant: view.frame.width - 64),
-            winnerView.heightAnchor.constraint(equalToConstant: view.frame.width - 64)
+            winnerView.heightAnchor.constraint(equalToConstant: view.frame.width - 32)
         ])
         
         winnerView.transform        = CGAffineTransform(scaleX: 1.3, y: 1.3)

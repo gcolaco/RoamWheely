@@ -129,7 +129,7 @@ class WheelyVC: UIViewController {
 
     
     @objc private func goToOptionsVC() {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
 }
 

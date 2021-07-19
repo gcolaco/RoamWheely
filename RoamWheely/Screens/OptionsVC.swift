@@ -102,7 +102,9 @@ class OptionsVC: UIViewController {
     
     @objc private func goToWheelyButtonPressed() {
         let destVC = WheelyVC()
-        navigationController?.pushViewController(destVC, animated: true)
+        destVC.modalPresentationStyle  = .overFullScreen
+        destVC.modalTransitionStyle    = .crossDissolve
+        self.present(destVC, animated: true)
     }
     
     @objc private func addFavoriteButtonPressed() {

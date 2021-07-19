@@ -11,7 +11,7 @@ class OptionsCell: UITableViewCell {
 
     static let reuseID  = "OptionsCell"
     
-    let optionLabel   = RoamWheelyTitleLabel(textAlignment: .left, fontSize: 26)
+    let optionLabel     = RoamWheelyTitleLabel(textAlignment: .left, fontSize: 26)
     let bgView          = UIView()
     
     
@@ -21,6 +21,7 @@ class OptionsCell: UITableViewCell {
         configureBgView()
         configureUserNameLabel()
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -59,8 +60,6 @@ class OptionsCell: UITableViewCell {
         let padding: CGFloat    = 12
         
         NSLayoutConstraint.activate([
-
-            
             optionLabel.centerYAnchor.constraint(equalTo: bgView.centerYAnchor),
             optionLabel.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: padding),
             optionLabel.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: -padding),
@@ -69,6 +68,5 @@ class OptionsCell: UITableViewCell {
         
     }
     
-
 }
 

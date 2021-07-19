@@ -9,6 +9,7 @@ import UIKit
 
 class AddOptionsVC: UIViewController {
     
+    // MARK: - Properties
     let wheelLogo       = UIImageView()
     let messageLabel    = RoamWheelyBodyLabel(textAlignment: .center)
     let optionTxtField  = RoamWheelyTextField()
@@ -18,6 +19,8 @@ class AddOptionsVC: UIViewController {
         return !optionTxtField.text!.isEmpty
     }
 
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -30,12 +33,8 @@ class AddOptionsVC: UIViewController {
         configureActionButton()
     }
     
-    private func createDismissKeyboardTapGesture() {
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(tap)
-    }
     
-    
+    // MARK: - UI configurations
     private func configureWheelImg() {
         wheelLogo.translatesAutoresizingMaskIntoConstraints = false
         wheelLogo.image = Images.wheelOfFortune
@@ -87,8 +86,15 @@ class AddOptionsVC: UIViewController {
             actionButton.heightAnchor.constraint(equalToConstant: 55)
         ])
     }
+    
+    
+    private func createDismissKeyboardTapGesture() {
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+    }
 
     
+    // MARK: - Selectors and actions
     @objc private func addOptionAction() {
         guard isOptionEntered else {
             presentRoamWheelyALertOnMainThread(title: "🚨 Ooops", message: "An option can't be empty.", buttonTitle: "Ok")
@@ -111,6 +117,8 @@ class AddOptionsVC: UIViewController {
 
 }
 
+
+    // MARK: - Extensions
 extension AddOptionsVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

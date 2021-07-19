@@ -9,6 +9,7 @@ import UIKit
 
 class WheelyVC: UIViewController {
     
+    // MARK: - Properties
     private let spinWheelButton         = RoamWheelyButton(backgroundColor: .systemPurple, title: "Spin")
     private let goToOptionsVCButton     = RoamWheelyButton(backgroundColor: .systemOrange, title: "+")
     private let backgroundImage         = UIImageView()
@@ -25,6 +26,7 @@ class WheelyVC: UIViewController {
     }()
     
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -43,6 +45,7 @@ class WheelyVC: UIViewController {
     }
     
     
+    // MARK: - UI configurations
     private func getOptions() {
         PersistenceManager.retrieveOptions { [weak self] result in
             guard let self = self else {return}
@@ -72,7 +75,6 @@ class WheelyVC: UIViewController {
         goToOptionsVCButton.layer.cornerRadius = 25
         
         NSLayoutConstraint.activate([
-            
             goToOptionsVCButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
             goToOptionsVCButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             goToOptionsVCButton.widthAnchor.constraint(equalToConstant: 50),
@@ -106,7 +108,7 @@ class WheelyVC: UIViewController {
     }
     
     
-    private func configureWinnerView() {
+    private func configureWinnerView(winnerOption: String) {
         view.addSubview(winnerView)
 
         NSLayoutConstraint.activate([
@@ -116,8 +118,9 @@ class WheelyVC: UIViewController {
             winnerView.heightAnchor.constraint(equalToConstant: view.frame.width - 64)
         ])
         
-        winnerView.transform    = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        winnerView.delegate     = self
+        winnerView.transform        = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        winnerView.delegate         = self
+        winnerView.winnerLbl.text   = winnerOption
         
         UIView.animate(withDuration: 0.5) {
             self.visualEffectView.alpha = 1
@@ -128,24 +131,28 @@ class WheelyVC: UIViewController {
     }
 
     
+    // MARK: - Selectors and actions
     @objc private func goToOptionsVC() {
         dismiss(animated: true, completion: nil)
     }
 }
 
 
+    // MARK: - Extensions
 extension WheelyVC: RoamWheelyDelegate {
     func shouldSelectObject() -> Int? {
         return Int.random(in: 0...wheelOptions.count)
     }
     
+    
     func finishedSelecting(index: Int?, error: Error?) {
         if index != nil {
-            self.configureWinnerView()
-            print("\(wheelOptions[index!].optionName)")
+            let choosenOption = wheelOptions[index!].optionName
+            self.configureWinnerView(winnerOption: choosenOption)
         }
     }
 }
+
 
 extension WheelyVC: RoamWheelyWinnerViewDelegate {
     func handleDismissView() {

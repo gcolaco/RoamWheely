@@ -9,6 +9,7 @@ import UIKit
 
 class RoamWheelyAlertVC: UIViewController {
 
+    // MARK: - Properties
     let containerView   = RoamWheelyContainerView()
     let titleLabel      = RoamWheelyTitleLabel(textAlignment: .center, fontSize: 20)
     let messageLabel    = RoamWheelyBodyLabel(textAlignment: .center)
@@ -21,6 +22,7 @@ class RoamWheelyAlertVC: UIViewController {
     private let padding: CGFloat = 20
     
     
+    // MARK: - Inits & Lifecycle
     init(title: String, message: String, buttonTitle: String) {
         super.init(nibName: nil, bundle: nil)
         alertTitle          = title
@@ -28,9 +30,11 @@ class RoamWheelyAlertVC: UIViewController {
         self.buttonTitle    = buttonTitle
     }
     
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +46,8 @@ class RoamWheelyAlertVC: UIViewController {
         configureMessageLabel()
     }
     
+    
+    // MARK: - UI configurations
     private func configureContainerView() {
         NSLayoutConstraint.activate([
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -79,8 +85,8 @@ class RoamWheelyAlertVC: UIViewController {
     
     
     private func configureMessageLabel() {
-        messageLabel.text = message ?? "Unable to complete request"
-        messageLabel.numberOfLines = 4
+        messageLabel.text           = message ?? "Unable to complete request"
+        messageLabel.numberOfLines  = 4
         
         NSLayoutConstraint.activate([
             messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
@@ -92,7 +98,7 @@ class RoamWheelyAlertVC: UIViewController {
         
     }
     
-    
+    // MARK: - Selectors and actions
     @objc private func dismissVC() {
         dismiss(animated: true)
     }

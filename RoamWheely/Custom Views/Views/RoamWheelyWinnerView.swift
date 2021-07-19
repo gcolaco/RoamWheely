@@ -14,17 +14,20 @@ protocol RoamWheelyWinnerViewDelegate {
 class RoamWheelyWinnerView: UIView {
     
     private let winnerImg       = UIImageView()
-    private let winnerLbl       = RoamWheelyTitleLabel(textAlignment: .center, fontSize: 26)
+    private let messageLbl      = RoamWheelyTitleLabel(textAlignment: .center, fontSize: 22)
+    let winnerLbl               = RoamWheelyTitleLabel(textAlignment: .center, fontSize: 36)
     private let actionButton    = RoamWheelyButton(backgroundColor: .systemGreen, title: "Ok!")
     
     var delegate: RoamWheelyWinnerViewDelegate?
 
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
-        addSubviews(winnerImg, winnerLbl, actionButton)
+        addSubviews(winnerImg, messageLbl, winnerLbl, actionButton)
         configureWinnerImg()
-        configureWinnerLabel()
+        configureMessageLbl()
+        configureWinnerLbl()
         configureActionButton()
     }
     
@@ -37,9 +40,9 @@ class RoamWheelyWinnerView: UIView {
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
         
-        backgroundColor = .white
+        backgroundColor     = .white
         
-        layer.cornerRadius = 10
+        layer.cornerRadius  = 10
     }
     
     
@@ -55,14 +58,25 @@ class RoamWheelyWinnerView: UIView {
         ])
     }
     
-    private func configureWinnerLabel() {
-        winnerLbl.text = "The winner is: "
+    
+    private func configureMessageLbl() {
+        messageLbl.text = "The winner is: "
         
         NSLayoutConstraint.activate([
-            winnerLbl.topAnchor.constraint(equalTo: winnerImg.bottomAnchor, constant: 16),
+            messageLbl.topAnchor.constraint(equalTo: winnerImg.bottomAnchor, constant: 16),
+            messageLbl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            messageLbl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            messageLbl.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+    
+    
+    private func configureWinnerLbl() {        
+        NSLayoutConstraint.activate([
+            winnerLbl.topAnchor.constraint(equalTo: messageLbl.bottomAnchor, constant: 16),
             winnerLbl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             winnerLbl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            winnerLbl.heightAnchor.constraint(equalToConstant: 32)
+            winnerLbl.heightAnchor.constraint(equalToConstant: 25)
         ])
     }
     
@@ -77,6 +91,7 @@ class RoamWheelyWinnerView: UIView {
             actionButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
+    
     
     @objc func handleActionButton() {
         delegate?.handleDismissView()

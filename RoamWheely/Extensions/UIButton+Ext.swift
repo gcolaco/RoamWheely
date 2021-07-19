@@ -21,9 +21,9 @@ extension UIButton {
     
     func popUpAnimatedView(visualEffectView: UIVisualEffectView, popUpView: UIView) {
         UIView.animate(withDuration: 0.5, animations: {
-            visualEffectView.alpha = 0
-            popUpView.alpha = 0
-            popUpView.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            visualEffectView.alpha  = 0
+            popUpView.alpha         = 0
+            popUpView.transform     = CGAffineTransform(scaleX: 1.3, y: 1.3)
         }) { (_) in
             popUpView.removeFromSuperview()
             print("Did remove pop up window..")

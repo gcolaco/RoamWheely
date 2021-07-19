@@ -9,6 +9,7 @@ import UIKit
 
 class OptionsVC: UIViewController {
     
+    // MARK: - Properties
     private let tableView       = UITableView()
     private let goToWheelyBtn   = RoamWheelyButton(backgroundColor: .systemPurple, image: Images.wheelBtnImg!)
 
@@ -16,6 +17,7 @@ class OptionsVC: UIViewController {
     var options: [Option] = []
 
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureVC()
@@ -30,7 +32,8 @@ class OptionsVC: UIViewController {
         getOptions()
     }
     
-     
+    
+    // MARK: - UI configurations
     private func configureVC() {
         view.backgroundColor                                    = .systemBackground
         title                                                   = "Options"
@@ -85,27 +88,31 @@ class OptionsVC: UIViewController {
     
     private func configureGoToWheelyButton() {
         tableView.addSubview(goToWheelyBtn)
-        goToWheelyBtn.layer.cornerRadius = 50
         goToWheelyBtn.addTarget(self, action: #selector(goToWheelyButtonPressed), for: .touchUpInside)
         
-        let centerXConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 100 : 125
+        let centerXConstant: CGFloat        = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 100 : 125
+        let sizeConstant: CGFloat           = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 80 : 100
+        goToWheelyBtn.layer.cornerRadius    = sizeConstant / 2
         
         NSLayoutConstraint.activate([
             goToWheelyBtn.bottomAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.bottomAnchor, constant: -30),
             goToWheelyBtn.centerXAnchor.constraint(equalTo: tableView.centerXAnchor, constant: centerXConstant),
-            goToWheelyBtn.widthAnchor.constraint(equalToConstant: 100),
-            goToWheelyBtn.heightAnchor.constraint(equalToConstant: 100)
+            goToWheelyBtn.widthAnchor.constraint(equalToConstant: sizeConstant),
+            goToWheelyBtn.heightAnchor.constraint(equalToConstant: sizeConstant)
         
         ])
         
     }
     
+    
+    // MARK: - Selectors and actions
     @objc private func goToWheelyButtonPressed() {
         let destVC = WheelyVC()
         destVC.modalPresentationStyle  = .overFullScreen
         destVC.modalTransitionStyle    = .crossDissolve
         self.present(destVC, animated: true)
     }
+    
     
     @objc private func addFavoriteButtonPressed() {
         let addOptionVC = AddOptionsVC()
@@ -115,7 +122,7 @@ class OptionsVC: UIViewController {
 }
 
 
-
+    // MARK: - Extensions
 extension OptionsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return options.count
@@ -130,6 +137,7 @@ extension OptionsVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else {return}
         
@@ -142,21 +150,14 @@ extension OptionsVC: UITableViewDelegate, UITableViewDataSource {
                 tableView.deleteRows(at: [indexPath], with: .left)
                 return
             }
-            
             self.presentRoamWheelyALertOnMainThread(title: "Unable to remove", message: error.rawValue, buttonTitle: "Ok")
-            
         }
-        
         
         if options.isEmpty {
             showEmptyStateView(with: "You don't have any options. Add one by tapping the \"+\" sign!", in: self.view)
             self.goToWheelyBtn.isHidden = true
         }
-        
-        
+               
     }
-    
-    
+
 }
-
-

@@ -14,6 +14,7 @@ class RoamWheelyTextField: UITextField {
         configure()
     }
     
+    
     required init?(coder: NSCoder) {
         fatalError("fatal error on RoamWheelyTextField")
     }

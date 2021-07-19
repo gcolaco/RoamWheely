@@ -22,7 +22,7 @@ class RoamWheelyContainerView: UIView {
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
         
-        backgroundColor = .systemBackground
+        backgroundColor       = .systemBackground
         
         layer.cornerRadius    = 16
         layer.borderWidth     = 2

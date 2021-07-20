@@ -52,7 +52,7 @@ class RoamWheelyTests: XCTestCase {
 
         let numberOfRows = sut.tableView(tableView, numberOfRowsInSection: expectedRows)
         XCTAssertEqual(numberOfRows, 2,
-                       "Number of rows in table should match number of kittens")
+                       "Number of rows in table should match number of options")
         
     }
     

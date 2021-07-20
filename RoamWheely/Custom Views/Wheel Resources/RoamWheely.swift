@@ -9,7 +9,7 @@ import UIKit
 
 protocol RoamWheelyDelegate: NSObject {
     func shouldSelectObject() -> Int?
-    func finishedSelecting(index : Int? , error : Error?)
+    func finishedSelecting(index: Int? , error: Error?)
 }
 
 
@@ -21,7 +21,7 @@ class RoamWheely: UIView {
     }()
     
     private var indicator               = UIImageView()
-    var playButton                      = UIButton(type: .custom)
+    var spinButton                      = UIButton(type: .custom)
     
     private var sectorAngle: CGFloat    = 0
     private var selectionAngle: CGFloat = 0
@@ -34,7 +34,7 @@ class RoamWheely: UIView {
     weak var delegate: RoamWheelyDelegate?
 
     init(center: CGPoint, diameter : CGFloat , slices : [Slice]) {
-        super.init(frame: CGRect.init(origin: CGPoint.init(x: center.x - diameter/2, y: center.y - diameter/2), size: CGSize.init(width: diameter, height: diameter)))
+        super.init(frame: CGRect(origin: CGPoint.init(x: center.x - diameter/2, y: center.y - diameter/2), size: CGSize.init(width: diameter, height: diameter)))
         self.slices = slices
         initialSetUp()
     }
@@ -47,13 +47,13 @@ class RoamWheely: UIView {
     
     private func initialSetUp() {
         backgroundColor = .clear
-        addWheelView()
-        addStartBttn()
-        addIndicator()
+        configureWheelView()
+        configureSpinButton()
+        configureIndicator()
     }
     
     
-    private func addWheelView() {
+    private func configureWheelView() {
         let width               = self.bounds.width - self.indicatorSize.width
         let height              = self.bounds.height - self.indicatorSize.height
         
@@ -64,14 +64,14 @@ class RoamWheely: UIView {
         wheelView.backgroundColor      = .gray
         wheelView.layer.cornerRadius   = width/2
         wheelView.clipsToBounds        = true
-        self.addSubview(self.wheelView)
+        addSubview(self.wheelView)
         
         addWheelLayer()
     }
     
     
     private func addWheelLayer() {
-        if let slices = self.slices {
+        if let slices = slices {
             
             if slices.count >= 2 {
                 wheelView.layer.sublayers?.forEach({$0.removeFromSuperlayer()})
@@ -79,7 +79,7 @@ class RoamWheely: UIView {
                 sectorAngle = (2 * CGFloat.pi)/CGFloat(slices.count)
        
                 for (index,slice) in slices.enumerated() {
-                    let sector = RoamWheelySlice(frame: wheelView.bounds, startAngle: self.sectorAngle * CGFloat(index), sectorAngle: self.sectorAngle, slice: slice)
+                    let sector = RoamWheelySlice(frame: wheelView.bounds, startAngle: sectorAngle * CGFloat(index), sectorAngle: sectorAngle, slice: slice)
                     wheelView.layer.addSublayer(sector)
                     sector.setNeedsDisplay()
                 }
@@ -92,44 +92,44 @@ class RoamWheely: UIView {
     }
     
     
-    private func addIndicator() {
+    private func configureIndicator() {
         
-        let position    = CGPoint.init(x: self.frame.width - self.indicatorSize.width, y: self.bounds.height/2 - self.indicatorSize.height/2)
+        let position    = CGPoint(x: frame.width - indicatorSize.width, y: bounds.height/2 - indicatorSize.height/2)
         
-        indicator.frame = CGRect.init(origin: position, size: self.indicatorSize)
-        indicator.image = UIImage.init(named: "pointer")
+        indicator.frame = CGRect(origin: position, size: indicatorSize)
+        indicator.image = UIImage(named: "pointer")
         
         if indicator.superview == nil {
-            self.addSubview(self.indicator)
+            self.addSubview(indicator)
         }
         
     }
     
     
-    private func addStartBttn() {
-        let size    = CGSize.init(width: self.bounds.width * 0.2, height: self.bounds.height * 0.2)
-        let point   = CGPoint.init(x:  self.frame.width/2 - size.width/2, y: self.frame.height/2 - size.height/2 + 130)
+    private func configureSpinButton() {
+        let size    = CGSize(width: bounds.width * 0.2, height: bounds.height * 0.2)
+        let point   = CGPoint(x:  frame.width/2 - size.width/2, y: frame.height/2 - size.height/2 + 130)
         
-        playButton.setTitle("Spin", for: .normal)
-        playButton.frame = CGRect(origin: point, size: size)
+        spinButton.setTitle("Spin", for: .normal)
+        spinButton.frame = CGRect(origin: point, size: size)
         
-        playButton.addTarget(self, action: #selector(startAction(sender:)), for: .touchUpInside)
+        spinButton.addTarget(self, action: #selector(startAction(sender:)), for: .touchUpInside)
         
-        playButton.layer.cornerRadius   = self.playButton.frame.height/2
-        playButton.layer.borderWidth    = 0.5
-        playButton.layer.borderColor    = UIColor.white.cgColor
+        spinButton.layer.cornerRadius   = spinButton.frame.height/2
+        spinButton.layer.borderWidth    = 0.5
+        spinButton.layer.borderColor    = UIColor.white.cgColor
 
-        playButton.clipsToBounds        = true
+        spinButton.clipsToBounds        = true
         
-        playButton.backgroundColor      = .systemPurple
+        spinButton.backgroundColor      = .systemPurple
         
-        self.addSubview(playButton)
+        self.addSubview(spinButton)
     }
     
     
     @objc private func startAction(sender: UIButton) {
-        playButton.isEnabled = false
-        playButton.buttonAnimation(playButton)
+        spinButton.isEnabled = false
+        spinButton.buttonAnimation(spinButton)
 
         if let slicesCount = slices?.count {
             
@@ -157,14 +157,14 @@ class RoamWheely: UIView {
             delegate?.finishedSelecting(index: selectionIndex, error: nil)
         }
         
-        if !playButton.isEnabled {
-            playButton.isEnabled = true
+        if !spinButton.isEnabled {
+            spinButton.isEnabled = true
         }
     }
     
     
     func performSelection() {
-        var selectionSpinDuration : Double = 1
+        var selectionSpinDuration: Double = 1
         
         selectionAngle      = CGFloat(360).toRadians() - (sectorAngle * CGFloat(selectionIndex))
         let borderOffset    = sectorAngle * 0.1
@@ -177,15 +177,15 @@ class RoamWheely: UIView {
         
         var delay : Double = 0
         
-        let fastSpin                = CABasicAnimation.init(keyPath: "transform.rotation")
-        fastSpin.fromValue          = NSNumber.init(floatLiteral: 0)
-        fastSpin.toValue            = NSNumber.init(floatLiteral: .pi * 2)
+        let fastSpin                = CABasicAnimation(keyPath: "transform.rotation")
+        fastSpin.fromValue          = NSNumber(floatLiteral: 0)
+        fastSpin.toValue            = NSNumber(floatLiteral: .pi * 2)
         fastSpin.duration           = 0.7
         fastSpin.repeatCount        = 3
         fastSpin.beginTime          = CACurrentMediaTime() + delay
         delay                       += Double(fastSpin.duration) * Double(fastSpin.repeatCount)
         
-        let slowSpin                = CABasicAnimation.init(keyPath: "transform.rotation")
+        let slowSpin                = CABasicAnimation(keyPath: "transform.rotation")
         slowSpin.fromValue          = NSNumber.init(floatLiteral: 0)
         slowSpin.toValue            = NSNumber.init(floatLiteral: .pi * 2)
         slowSpin.isCumulative       = true
@@ -194,10 +194,10 @@ class RoamWheely: UIView {
         slowSpin.duration           = 1.5
         delay                       += Double(slowSpin.duration) * Double(slowSpin.repeatCount)
         
-        let selectionSpin           = CABasicAnimation.init(keyPath: "transform.rotation")
+        let selectionSpin           = CABasicAnimation(keyPath: "transform.rotation")
         selectionSpin.delegate      = self
-        selectionSpin.fromValue     = NSNumber.init(floatLiteral: 0)
-        selectionSpin.toValue       = NSNumber.init(floatLiteral: Double(self.selectionAngle))
+        selectionSpin.fromValue     = NSNumber(floatLiteral: 0)
+        selectionSpin.toValue       = NSNumber(floatLiteral: Double(self.selectionAngle))
         selectionSpin.duration      = selectionSpinDuration
         selectionSpin.beginTime     = CACurrentMediaTime() + delay
         selectionSpin.isCumulative  = true

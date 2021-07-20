@@ -41,13 +41,15 @@ class RoamWheelySlice: CALayer{
         let textLabel   = UILabel(frame: .zero)
         textLabel.text  = slice.option
         
-        let lineLegth   = CGFloat((2 * radius * sin(sectorAngle/2)))
+        
+        
+        let lineLegth        = CGFloat((2 * radius * sin(sectorAngle/2)))
 
-        let s           = (radius + radius + lineLegth)/2
+        let perimeterSize    = (radius + radius + lineLegth)/2
         
-        let inCenterDiameter = ((s * (s - radius) * (s - radius) * (s - lineLegth)).squareRoot()/s) * 1.50
+        let inCenterDiameter = ((perimeterSize * (perimeterSize - radius) * (perimeterSize - radius) * (perimeterSize - lineLegth)).squareRoot()/perimeterSize) * 1.50
         
-        var size: CGFloat = 0
+        var size: CGFloat    = 0
         
         size = sectorAngle == CGFloat(180).toRadians() ? radius/2 : sectorAngle == CGFloat(120).toRadians() ?  radius/1.9 : sectorAngle == CGFloat(90).toRadians() ? radius/1.9 : inCenterDiameter
 
@@ -57,9 +59,9 @@ class RoamWheelySlice: CALayer{
         let yIncenter = ((radius * sin(sectorAngle)) * radius)/(radius + radius + lineLegth)
         
 
-        let xPosition: CGFloat = sectorAngle == CGFloat(180).toRadians() ? (-size/2) : sectorAngle == CGFloat(120).toRadians() ? (radius/2.7 - size/2) : sectorAngle == CGFloat(90).toRadians() ? (radius/2.4 - size/2) : ((xIncenter - size/2) + height)
+        let xPosition:CGFloat = sectorAngle == CGFloat(180).toRadians() ? (-size/2) : sectorAngle == CGFloat(120).toRadians() ? (radius/2.7 - size/2) : sectorAngle == CGFloat(90).toRadians() ? (radius/2.4 - size/2) : ((xIncenter - size/2) + height)
         
-        let yPosition: CGFloat = sectorAngle == CGFloat(180).toRadians() ? size/1.6 : sectorAngle == CGFloat(120).toRadians() ? (radius/2 - size/2) : sectorAngle == CGFloat(90).toRadians() ? (radius/2.4 - size/2) : (yIncenter - size/2)
+        let yPosition:CGFloat = sectorAngle == CGFloat(180).toRadians() ? size/1.6 : sectorAngle == CGFloat(120).toRadians() ? (radius/2 - size/2) : sectorAngle == CGFloat(90).toRadians() ? (radius/2.4 - size/2) : (yIncenter - size/2)
         
         UIGraphicsPushContext(ctx)
         
@@ -80,7 +82,7 @@ class RoamWheelySlice: CALayer{
         ctx.rotate(by: startAngle)
         
         
-        textLabel.draw(CGRect.init(x: xPosition, y: yPosition , width: size, height: size))
+        textLabel.drawText(in: CGRect(x: xPosition, y: yPosition , width: size, height: size))
         ctx.restoreGState()
         UIGraphicsPopContext()
     }
